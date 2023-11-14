@@ -1,7 +1,14 @@
-let http = require("http")                                          // load / import 'http' and store functionality in variable http
+let http = require("http");
 
+let ourApp = http.createServer(function (req, res) {
+  if (req.url == "/") {
+    res.end("Hello!, and welcome to our website.");
+  }
 
-let ourApp = http.createServer(function(req, res){                  // node's http object is equivalent to browser's document object
-res.end("Hello!, and welcome to our website.")
-  })              
-ourApp.listen(3000)                                                 // listen to incoming request - equivalent to addEventListener
+  if (req.url == "/about") {
+    res.end("Thank you for the interest in our company");
+  } else {
+    res.end("We cannot find the page you are looking for");
+  }
+});
+ourApp.listen(4000);
